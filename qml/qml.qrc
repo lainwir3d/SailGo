@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>elements/GoSquare.qml</file>
+        <file>elements/GoBoard.qml</file>
+        <file>elements/images/board.svg</file>
+        <file>elements/GoPiece.qml</file>
+        <file>elements/images/black_piece.svg</file>
+        <file>elements/images/white_piece.svg</file>
+    </qresource>
+</RCC>
