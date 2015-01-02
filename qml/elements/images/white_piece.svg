@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="26.72084"
-   height="26.545441"
+   width="30.719999"
+   height="30.719999"
    id="svg8570"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 9">
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="white_piece.svg">
   <defs
      id="defs8572">
     <radialGradient
@@ -188,9 +188,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="-7.1294937"
-     inkscape:cy="12.3063"
+     inkscape:zoom="7.919596"
+     inkscape:cx="18.837532"
+     inkscape:cy="20.278229"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -211,7 +211,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -219,11 +219,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-362.90227,-521.10977)">
+     transform="translate(-364.67004,-518.70298)">
     <g
        id="white_stone"
        inkscape:label="#white_stone"
-       transform="translate(251.1184,444.81385)">
+       transform="translate(254.65394,444.30877)">
       <path
          inkscape:connector-curvature="0"
          id="path8772"

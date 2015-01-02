@@ -36,6 +36,10 @@ Item {
     Image {
         z: -1
         source: "images/board.svg"
+
+        sourceSize.width: 500
+        sourceSize.height: 500
+
         anchors.centerIn: parent
         anchors.fill: parent
     }

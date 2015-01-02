@@ -6,6 +6,9 @@ Image {
 
     state: "black"
 
+    sourceSize.width: 100
+    sourceSize.height: 100
+
     states: [
         State {
             name: "empty"
