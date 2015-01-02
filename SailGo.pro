@@ -2,7 +2,9 @@ TEMPLATE = app
 
 QT += qml quick widgets
 
-SOURCES += src/desktop/main.cpp
+SOURCES += src/desktop/main.cpp \
+    src/common/boardmodel.cpp \
+    src/common/boardlistmodelwrapper.cpp
 
 RESOURCES += qml/qml.qrc
 
@@ -11,3 +13,7 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+HEADERS += \
+    src/common/boardmodel.h \
+    src/common/boardlistmodelwrapper.h \
