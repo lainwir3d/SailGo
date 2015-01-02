@@ -59,7 +59,7 @@ QVariant BoardModel::data(const QModelIndex & index, int role) const
 
                 return state;
             case PieceRole:
-                return QString("black");
+                return QString("empty");
             case TerritoryRole:
                 return QString("neutral");
             case NoteRole:

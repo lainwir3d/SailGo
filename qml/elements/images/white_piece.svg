@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="30.719999"
-   height="30.719999"
+   width="27.719999"
+   height="27.719999"
    id="svg8570"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -188,9 +188,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="18.837532"
-     inkscape:cy="20.278229"
+     inkscape:zoom="15.839192"
+     inkscape:cx="24.43349"
+     inkscape:cy="20.040549"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -219,11 +219,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-364.67004,-518.70298)">
+     transform="translate(-364.67004,-521.70298)">
     <g
        id="white_stone"
        inkscape:label="#white_stone"
-       transform="translate(254.65394,444.30877)">
+       transform="translate(253.20185,445.76087)">
       <path
          inkscape:connector-curvature="0"
          id="path8772"

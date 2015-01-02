@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="30.719999"
-   height="30.719999"
+   width="27.719999"
+   height="27.719999"
    id="svg8570"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -352,9 +352,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="-34.463638"
-     inkscape:cy="13.558396"
+     inkscape:zoom="15.839192"
+     inkscape:cx="3.1968395"
+     inkscape:cy="9.7028575"
      inkscape:document-units="px"
      inkscape:current-layer="black_stone"
      showgrid="false"
@@ -383,7 +383,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-363.81431,-518.23866)">
+     transform="translate(-363.81431,-521.23866)">
     <g
        id="black_stone"
        inkscape:label="#black_stone"
@@ -407,7 +407,7 @@
          x="0" />
       <g
          id="g3082"
-         transform="translate(3.5355341,-0.37880672)">
+         transform="translate(2.1465743,0.82074988)">
         <path
            style="fill:url(#radialGradient3094);fill-opacity:1;stroke:none;display:inline"
            d="m 32.27248,20.83204 c 0,6.48276 -5.258917,11.74413 -11.73865,11.74413 -6.47973,0 -11.73864,-5.26137 -11.73864,-11.74413 0,-6.48276 5.25891,-11.74413 11.73864,-11.74413 6.479733,0 11.73865,5.26137 11.73865,11.74413 z"
