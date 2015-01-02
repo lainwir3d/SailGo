@@ -17,17 +17,27 @@ Item {
         Repeater {
             model : boardListModel
 
-            GoSquare {
-                state: squareState
+            MouseArea {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                GoPiece {
-                    anchors.centerIn: parent
-                    width: parent.width * 3/4
-                    height: width
+                onClicked: {
+                    console.log("cliqued index "+index);
+                }
 
-                    state: pieceState
+                GoSquare {
+                    anchors.centerIn: parent
+                    anchors.fill: parent
+
+                    state: squareState
+
+                    GoPiece {
+                        anchors.centerIn: parent
+                        width: parent.width
+                        height: width
+
+                        state: pieceState
+                    }
                 }
             }
         }
