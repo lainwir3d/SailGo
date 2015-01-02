@@ -13,6 +13,8 @@ Window {
 
     GoBoard {
         anchors.centerIn: parent
-        anchors.fill: parent
+
+        width: parent.width < parent.height ? parent.width : parent.height
+        height: width
     }
 }
