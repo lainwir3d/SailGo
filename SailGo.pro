@@ -4,7 +4,8 @@ QT += qml quick widgets
 
 SOURCES += src/desktop/main.cpp \
     src/common/boardmodel.cpp \
-    src/common/boardlistmodelwrapper.cpp
+    src/common/boardlistmodelwrapper.cpp \
+    src/common/abstractboardcontroller.cpp
 
 RESOURCES += qml/qml.qrc
 
@@ -17,3 +18,4 @@ include(deployment.pri)
 HEADERS += \
     src/common/boardmodel.h \
     src/common/boardlistmodelwrapper.h \
+    src/common/abstractboardcontroller.h
