@@ -18,19 +18,34 @@ Item {
             model : boardListModel
 
             MouseArea {
+                id: area
+
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+
+                hoverEnabled: true
 
                 onClicked: {
                     console.log("cliqued index "+index);
                     boardController.playMove(index);
                 }
 
+
                 GoSquare {
                     anchors.centerIn: parent
                     anchors.fill: parent
 
                     state: squareState
+
+                    GoPiece {
+                        id: hoverPiece
+
+                        anchors.fill: parent
+                        state: area.containsMouse ? boardController.nextPlayer : "empty"
+
+                        opacity: 0.5
+                    }
+
 
                     GoPiece {
                         anchors.centerIn: parent

@@ -31,7 +31,7 @@ QString AbstractBoardController::nextPlayer()
 {
     QString player;
 
-    player = nextPlayer_ == WhitePlayer ? "White" : "Black";
+    player = nextPlayer_ == WhitePlayer ? "white" : "black";
 
     return player;
 }
@@ -39,4 +39,5 @@ QString AbstractBoardController::nextPlayer()
 void AbstractBoardController::switchPlayer()
 {
     this->nextPlayer_ = this->nextPlayer_ == WhitePlayer ? BlackPlayer : WhitePlayer;
+    emit nextPlayerChanged();
 }

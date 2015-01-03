@@ -7,6 +7,9 @@
 class AbstractBoardController : public QObject
 {
     Q_OBJECT
+
+    Q_PROPERTY(QString nextPlayer READ nextPlayer NOTIFY nextPlayerChanged)
+
 public:
     explicit AbstractBoardController(BoardModel * model, QObject *parent = 0);
 
@@ -19,6 +22,7 @@ public:
 signals:
     QString moveForbidden();
     int playerPassed();
+    void nextPlayerChanged();
 
 public slots:
 
