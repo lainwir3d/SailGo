@@ -13,6 +13,8 @@ public:
     Q_INVOKABLE void playMove(int linearIndex);
     Q_INVOKABLE void playMove(int line, int column);
 
+    QString nextPlayer();
+    void switchPlayer();
 
 signals:
     QString moveForbidden();
@@ -25,7 +27,7 @@ private:
         WhitePlayer = 1,
         BlackPlayer = 2
     };
-    int nextPlayer;
+    int nextPlayer_;
     BoardModel * model_;
 
 };

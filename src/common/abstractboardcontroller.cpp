@@ -4,14 +4,14 @@ AbstractBoardController::AbstractBoardController(BoardModel * model, QObject *pa
     QObject(parent)
 {
     this->model_ = model;
-    this->nextPlayer = WhitePlayer;
+    this->nextPlayer_ = WhitePlayer;
 }
 
 void AbstractBoardController::playMove(int linearIndex)
 {
     if(model_->isEmpty(linearIndex)){
-        this->model_->setPiece(linearIndex, this->nextPlayer == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
-        this->nextPlayer = this->nextPlayer == WhitePlayer ? BlackPlayer : WhitePlayer;
+        this->model_->setPiece(linearIndex, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
+        switchPlayer();
     }else{
         qDebug("Not playable.");
     }
@@ -20,9 +20,23 @@ void AbstractBoardController::playMove(int linearIndex)
 void AbstractBoardController::playMove(int line, int column)
 {
     if(model_->isEmpty(line, column)){
-        this->model_->setPiece(line, column, this->nextPlayer == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
-        this->nextPlayer = this->nextPlayer == WhitePlayer ? BlackPlayer : WhitePlayer;
+        this->model_->setPiece(line, column, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
+        switchPlayer();
     }else{
         qDebug("Not playable.");
     }
+}
+
+QString AbstractBoardController::nextPlayer()
+{
+    QString player;
+
+    player = nextPlayer_ == WhitePlayer ? "White" : "Black";
+
+    return player;
+}
+
+void AbstractBoardController::switchPlayer()
+{
+    this->nextPlayer_ = this->nextPlayer_ == WhitePlayer ? BlackPlayer : WhitePlayer;
 }
