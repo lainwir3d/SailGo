@@ -5,6 +5,12 @@ BoardModel::BoardModel(int rows, int columns, QObject *parent) :
 {
     this->nrows_ = rows;
     this->ncolumns_ = columns;
+
+    p_pieces = (u_int8_t *) malloc(nrows_ * ncolumns_* 1);
+
+    for(int i=0; i<rows*columns;i++){
+        p_pieces[i] = NoPiece;
+    }
 }
 
 QHash<int, QByteArray> BoardModel::roleNames() const
@@ -15,6 +21,41 @@ QHash<int, QByteArray> BoardModel::roleNames() const
     roles[TerritoryRole] = "territory";
     roles[NoteRole] = "note";
     return roles;
+}
+
+void BoardModel::setPiece(int row, int column, PieceState state)
+{
+    p_pieces[gridToLinearIndex(row, column)] = state;
+
+    QModelIndex topLeft = this->createIndex(row, column);
+    QModelIndex bottomRight = this->createIndex(row, column);
+
+    emit this->dataChanged(topLeft, bottomRight);
+}
+
+void BoardModel::setPiece(int linearIndex, PieceState state)
+{
+    qDebug() << "Played " << ((state == WhitePiece) ? "white" : "black");
+    p_pieces[linearIndex] = state;
+
+    int row;
+    int column;
+    linearToGridIndex(linearIndex, &row, &column);
+
+    QModelIndex topLeft = this->createIndex(row, column);
+    QModelIndex bottomRight = this->createIndex(row, column);
+
+    emit this->dataChanged(topLeft, bottomRight);
+}
+
+bool BoardModel::isEmpty(int row, int column)
+{
+    return (p_pieces[gridToLinearIndex(row, column)] == NoPiece);
+}
+
+bool BoardModel::isEmpty(int linearIndex)
+{
+    return (p_pieces[linearIndex] == NoPiece);
 }
 
 int BoardModel::rowCount(const QModelIndex & parent) const
@@ -32,8 +73,13 @@ QVariant BoardModel::data(const QModelIndex & index, int role) const
 {
     QString state;	// grid state
 
+    QModelIndex linearIndex = gridToLinearIndex(index);
+
+    int linearRow = linearIndex.row();
     int row = index.row();
     int column = index.column();
+
+    u_int8_t piece = p_pieces[linearRow];
 
     switch(role){
             case GridRole:
@@ -59,7 +105,14 @@ QVariant BoardModel::data(const QModelIndex & index, int role) const
 
                 return state;
             case PieceRole:
-                return QString("empty");
+                if(piece == NoPiece){
+                    return QString("empty");
+                }else if(piece == BlackPiece){
+                    return QString("black");
+                }else if(piece == WhitePiece){
+                    return QString("white");
+                }else return QString("empty");
+
             case TerritoryRole:
                 return QString("neutral");
             case NoteRole:
@@ -69,5 +122,47 @@ QVariant BoardModel::data(const QModelIndex & index, int role) const
         }
 
     return QVariant();
+}
+
+QModelIndex BoardModel::gridToLinearIndex(const QModelIndex gridIdx) const
+{
+    int linearRow = 0;
+    int linearColumn = 0;
+
+    linearRow = gridIdx.row() * this->columnCount() + gridIdx.column();
+
+    QModelIndex linIdx = this->createIndex(linearRow, linearColumn);
+
+    return linIdx;
+}
+
+int BoardModel::gridToLinearIndex(int row, int column)
+{
+    int linearRow = 0;
+
+    linearRow = row * this->columnCount() + column;
+
+    return linearRow;
+}
+
+
+
+QModelIndex BoardModel::linearToGridIndex(const QModelIndex linIdx) const
+{
+    int tableRow = 0;
+    int tableColumn = 0;
+
+    tableRow = linIdx.row() / this->columnCount();
+    tableColumn = linIdx.row() % this->columnCount();
+
+    QModelIndex tableIdx = this->createIndex(tableRow, tableColumn);
+
+    return tableIdx;
+}
+
+void BoardModel::linearToGridIndex(int linearIndex, int *row, int *column)
+{
+    *row = linearIndex / this->columnCount();
+    *column = linearIndex % this->columnCount();
 }
 

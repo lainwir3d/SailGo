@@ -17,6 +17,7 @@ public:
 signals:
 
 public slots:
+    void dataChangedCB(const QModelIndex & topLeft, const QModelIndex & bottomRight);
 
 private:
     BoardModel * model_;

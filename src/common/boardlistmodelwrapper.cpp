@@ -4,6 +4,8 @@ BoardListModelWrapper::BoardListModelWrapper(BoardModel * model, QObject *parent
     QAbstractListModel(parent)
 {
     this->model_ = model;
+
+    connect(model_, SIGNAL(dataChanged(QModelIndex,QModelIndex)), this, SLOT(dataChangedCB(QModelIndex,QModelIndex)));
 }
 
 QHash<int, QByteArray> BoardListModelWrapper::roleNames() const
@@ -27,6 +29,15 @@ const QModelIndex BoardListModelWrapper::rowToTableIndex(const QModelIndex &idx)
     QModelIndex tableIdx = this->createIndex(tableRow, tableColumn);
 
     return tableIdx;
+}
+
+void BoardListModelWrapper::dataChangedCB(const QModelIndex &topLeft, const QModelIndex &bottomRight)
+{
+    QModelIndex linTopLeft = model_->gridToLinearIndex(topLeft);
+    QModelIndex linBottomRight = model_->gridToLinearIndex(bottomRight);
+
+    emit dataChanged(linTopLeft, linBottomRight);
+
 }
 
 QVariant BoardListModelWrapper::data(const QModelIndex & index, int role) const

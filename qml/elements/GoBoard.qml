@@ -23,6 +23,7 @@ Item {
 
                 onClicked: {
                     console.log("cliqued index "+index);
+                    boardController.playMove(index);
                 }
 
                 GoSquare {
