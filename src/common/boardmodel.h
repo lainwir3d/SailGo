@@ -4,7 +4,11 @@
 #include <QAbstractTableModel>
 #include <QDebug>
 
-typedef u_int8_t piece_t;
+#include "common.h"
+#include "moveAnalysis.h"
+
+
+class MoveAnalysis;
 
 class BoardModel : public QAbstractTableModel
 {
@@ -52,6 +56,7 @@ private:
     int ncolumns_;
 	 int nslots;
     piece_t * p_pieces;
+
 
 
 

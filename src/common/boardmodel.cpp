@@ -1,4 +1,5 @@
 #include "boardmodel.h"
+#include "moveAnalysis.h"
 
 BoardModel::BoardModel(int rows, int columns, QObject *parent) :
     QAbstractTableModel(parent)
@@ -59,7 +60,6 @@ int BoardModel::rowCount(const QModelIndex & parent) const
 {
     return this->nrows_;
 }
-
 
 int BoardModel::columnCount(const QModelIndex & parent) const
 {

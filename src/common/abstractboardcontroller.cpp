@@ -5,11 +5,17 @@ AbstractBoardController::AbstractBoardController(BoardModel * model, QObject *pa
 {
     this->model_ = model;
     this->nextPlayer_ = WhitePlayer;
+	 this->analysis = new MoveAnalysis(model);
+}
+
+AbstractBoardController::~AbstractBoardController()
+{
+	delete analysis;
 }
 
 void AbstractBoardController::playMove(int linearIndex)
 {
-    if(model_->isEmpty(linearIndex)){
+    if(model_->isEmpty(linearIndex) && analysis->moveCorrect(this->nextPlayer_, linearIndex)) {
         this->model_->setPiece(linearIndex, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
         switchPlayer();
     }else{
@@ -19,12 +25,7 @@ void AbstractBoardController::playMove(int linearIndex)
 
 void AbstractBoardController::playMove(int line, int column)
 {
-    if(model_->isEmpty(line, column)){
-        this->model_->setPiece(line, column, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
-        switchPlayer();
-    }else{
-        qDebug("Not playable.");
-    }
+	 playMove(model_->gridToLinearIndex(line, column));
 }
 
 QString AbstractBoardController::nextPlayer()
@@ -34,6 +35,11 @@ QString AbstractBoardController::nextPlayer()
     player = nextPlayer_ == WhitePlayer ? "white" : "black";
 
     return player;
+}
+
+player_t AbstractBoardController::nextPlayerIndex()
+{
+	return nextPlayer_;
 }
 
 void AbstractBoardController::switchPlayer()
