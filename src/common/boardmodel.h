@@ -4,6 +4,12 @@
 #include <QAbstractTableModel>
 #include <QDebug>
 
+#include "common.h"
+#include "moveAnalysis.h"
+
+
+class MoveAnalysis;
+
 class BoardModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -23,6 +29,8 @@ public:
         WhitePiece,
         BlackPiece
     };
+
+	 inline piece_t operator[] (int i) { return p_pieces[i]; }
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     int columnCount(const QModelIndex & parent = QModelIndex()) const;
@@ -46,7 +54,9 @@ public slots:
 private:
     int nrows_;
     int ncolumns_;
-    u_int8_t * p_pieces;
+	 int nslots;
+    piece_t * p_pieces;
+
 
 
 

@@ -2,7 +2,10 @@
 #define ABSTRACTBOARDCONTROLLER_H
 
 #include <QObject>
+
+#include "common.h"
 #include "boardmodel.h"
+
 
 class AbstractBoardController : public QObject
 {
@@ -12,11 +15,13 @@ class AbstractBoardController : public QObject
 
 public:
     explicit AbstractBoardController(BoardModel * model, QObject *parent = 0);
+	 ~AbstractBoardController();
 
     Q_INVOKABLE void playMove(int linearIndex);
     Q_INVOKABLE void playMove(int line, int column);
 
     QString nextPlayer();
+	 player_t nextPlayerIndex();
     void switchPlayer();
 
 signals:
@@ -31,8 +36,9 @@ private:
         WhitePlayer = 1,
         BlackPlayer = 2
     };
-    int nextPlayer_;
+    player_t nextPlayer_;
     BoardModel * model_;
+	 MoveAnalysis *analysis;
 
 };
 

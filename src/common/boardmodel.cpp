@@ -1,16 +1,14 @@
 #include "boardmodel.h"
+#include "moveAnalysis.h"
 
 BoardModel::BoardModel(int rows, int columns, QObject *parent) :
     QAbstractTableModel(parent)
 {
     this->nrows_ = rows;
     this->ncolumns_ = columns;
+	 this->nslots = rows * columns;
 
-    p_pieces = (u_int8_t *) malloc(nrows_ * ncolumns_* 1);
-
-    for(int i=0; i<rows*columns;i++){
-        p_pieces[i] = NoPiece;
-    }
+    p_pieces = (piece_t *) calloc(this->nslots, sizeof(piece_t));
 }
 
 QHash<int, QByteArray> BoardModel::roleNames() const
@@ -62,7 +60,6 @@ int BoardModel::rowCount(const QModelIndex & parent) const
 {
     return this->nrows_;
 }
-
 
 int BoardModel::columnCount(const QModelIndex & parent) const
 {
@@ -165,4 +162,3 @@ void BoardModel::linearToGridIndex(int linearIndex, int *row, int *column)
     *row = linearIndex / this->columnCount();
     *column = linearIndex % this->columnCount();
 }
-

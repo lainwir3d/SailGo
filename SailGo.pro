@@ -5,7 +5,8 @@ QT += qml quick widgets
 SOURCES += src/desktop/main.cpp \
     src/common/boardmodel.cpp \
     src/common/boardlistmodelwrapper.cpp \
-    src/common/abstractboardcontroller.cpp
+    src/common/abstractboardcontroller.cpp \
+    src/common/moveAnalysis.cpp
 
 RESOURCES += qml/qml.qrc
 
