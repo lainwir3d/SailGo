@@ -46,6 +46,11 @@ void BoardModel::setPiece(int linearIndex, PieceState state)
     emit this->dataChanged(topLeft, bottomRight);
 }
 
+void BoardModel::setPieceTmp(int linearIndex, piece_t state)
+{
+	p_pieces[linearIndex] = state;
+}
+
 bool BoardModel::isEmpty(int row, int column)
 {
     return (p_pieces[gridToLinearIndex(row, column)] == NoPiece);
@@ -64,6 +69,11 @@ int BoardModel::rowCount(const QModelIndex & parent) const
 int BoardModel::columnCount(const QModelIndex & parent) const
 {
     return this->ncolumns_;
+}
+
+unsigned int BoardModel::nslotsCount() const
+{
+	return this->nslots;
 }
 
 QVariant BoardModel::data(const QModelIndex & index, int role) const
