@@ -1,5 +1,7 @@
 TEMPLATE = app
 
+CONFIG += c++11
+
 QT += qml quick widgets
 
 SOURCES += src/desktop/main.cpp \
@@ -15,8 +17,6 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
-
-QMAKE_CXXFLAGS += -std=c++11
 
 HEADERS += \
     src/common/boardmodel.h \
