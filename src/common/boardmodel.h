@@ -7,7 +7,6 @@
 #include "common.h"
 #include "moveAnalysis.h"
 
-
 class MoveAnalysis;
 
 class BoardModel : public QAbstractTableModel
@@ -34,6 +33,8 @@ public:
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     int columnCount(const QModelIndex & parent = QModelIndex()) const;
+	 unsigned int nslotsCount() const;
+
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     QHash<int, QByteArray> roleNames() const;
 
@@ -44,6 +45,7 @@ public:
 
     void setPiece(int row, int column, PieceState state);
     void setPiece(int linearIndex, PieceState state);
+	 void setPieceTmp(int linearIndex, piece_t state);
 
     bool isEmpty(int row, int column);
     bool isEmpty(int linearIndex);
