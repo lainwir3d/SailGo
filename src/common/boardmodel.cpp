@@ -9,6 +9,7 @@ BoardModel::BoardModel(int rows, int columns, QObject *parent) :
 	 this->nslots = rows * columns;
 
     p_pieces = (piece_t *) calloc(this->nslots, sizeof(piece_t));
+	 this->forbidden = -1;
 }
 
 QHash<int, QByteArray> BoardModel::roleNames() const
@@ -49,6 +50,21 @@ void BoardModel::setPiece(int linearIndex, PieceState state)
 void BoardModel::setPieceTmp(int linearIndex, piece_t state)
 {
 	p_pieces[linearIndex] = state;
+}
+
+void BoardModel::prisoner(int linearIndex)
+{
+	setPiece(linearIndex, NoPiece);
+}
+
+void BoardModel::setForbiddenPlay(int linearIndex)
+{
+	forbidden = linearIndex;
+}
+
+bool BoardModel::isForbidden(int linearIndex)
+{
+	return linearIndex == forbidden;
 }
 
 bool BoardModel::isEmpty(int row, int column)

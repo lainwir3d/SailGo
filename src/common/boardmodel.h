@@ -3,6 +3,7 @@
 
 #include <QAbstractTableModel>
 #include <QDebug>
+#include <vector>
 
 #include "common.h"
 #include "moveAnalysis.h"
@@ -46,6 +47,10 @@ public:
     void setPiece(int row, int column, PieceState state);
     void setPiece(int linearIndex, PieceState state);
 	 void setPieceTmp(int linearIndex, piece_t state);
+	 void prisoner(int linearIndex);
+
+	 void setForbiddenPlay(int linearIndex);
+    bool isForbidden(int linearIndex);
 
     bool isEmpty(int row, int column);
     bool isEmpty(int linearIndex);
@@ -58,11 +63,7 @@ private:
     int ncolumns_;
 	 int nslots;
     piece_t * p_pieces;
-
-
-
-
-
+	 int forbidden; // to avoid recursive play
 };
 
 #endif // BOARDMODEL_H
