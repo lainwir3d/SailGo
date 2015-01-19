@@ -35,11 +35,10 @@ import "../../elements"
 Page {
     id: page
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         id: flickable
-        anchors.fill: parent
 
+        anchors.fill: parent
 
         PullDownMenu {
             MenuItem {
@@ -47,24 +46,58 @@ Page {
             }
         }
 
-        GoBoard {
-            id: board
+        // Tell SilicaFlickable the height of its content.
+        contentWidth: boardContainer.width;
+        contentHeight: boardContainer.height
 
-            anchors.centerIn: parent
+        PageHeader {
+            id: header
+            title: qsTr("SailGo")
+        }
 
-            width: page.width < page.height ? page.width : page.height
-            height: width
+        PinchArea {
+            z:10
+            id: pinchArea
 
-            onScaleChanged: {
-                if ((width * scale) > imageFlickable.width) {
-                    var xoff = (imageFlickable.width / 2 + imageFlickable.contentX) * scale / prevScale;
-                    flickable.contentX = xoff - flickable.width / 2
+            property real minScale: 1.0
+            property real maxScale: 3.0
+
+            anchors.fill: parent
+
+            enabled: true;
+            pinch.target: board
+            pinch.minimumScale: minScale * 0.5 // This is to create "bounce back effect"
+            pinch.maximumScale: maxScale * 1.5 // when over zoomed
+
+            Item {
+                id: boardContainer
+
+                width: Math.max(board.width * board.scale, flickable.width)
+                height: Math.max(board.height * board.scale, flickable.height)
+
+                GoBoard {
+                    id: board
+
+                    property real prevScale
+
+                    anchors.centerIn: parent
+
+                    width: page.width < page.height ? page.width : page.height
+                    height: width
+
+                    onScaleChanged: {
+                        if ((width * scale) > flickable.width) {
+                            var xoff = (flickable.width / 2 + flickable.contentX) * scale / prevScale;
+                            flickable.contentX = xoff - flickable.width / 2
+                        }
+                        if ((height * scale) > flickable.height) {
+                            var yoff = (flickable.height / 2 + flickable.contentY) * scale / prevScale;
+                            flickable.contentY = yoff - flickable.height / 2
+                        }
+                        prevScale = scale
+                    }
                 }
-                if ((height * scale) > imageFlickable.height) {
-                    var yoff = (imageFlickable.height / 2 + imageFlickable.contentY) * scale / prevScale;
-                    flickable.contentY = yoff - flickable.height / 2
-                }
-                prevScale = scale
+
             }
         }
     }

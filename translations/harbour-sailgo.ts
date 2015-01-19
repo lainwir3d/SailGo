@@ -14,6 +14,10 @@
         <source>New game</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SailGo</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>main</name>
