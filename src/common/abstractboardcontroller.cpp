@@ -15,13 +15,13 @@ AbstractBoardController::~AbstractBoardController()
 
 void AbstractBoardController::playMove(int linearIndex)
 {
-    if(model_->isEmpty(linearIndex) && analysis->moveCorrect(this->nextPlayer_, linearIndex)) {
-        this->model_->setPiece(linearIndex, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
-		  analysis->prisoners();
-        switchPlayer();
-    }else{
-        qDebug("Not playable.");
-    }
+	if(!model_->isEmpty(linearIndex) || model_->isForbidden(linearIndex) || !analysis->moveCorrect(this->nextPlayer_, linearIndex)) {
+		qDebug("Not playable.");
+		return;
+	}
+	this->model_->setPiece(linearIndex, this->nextPlayer_ == WhitePlayer ? model_->WhitePiece : model_->BlackPiece);
+	analysis->prisoners();
+	switchPlayer();
 }
 
 void AbstractBoardController::playMove(int line, int column)

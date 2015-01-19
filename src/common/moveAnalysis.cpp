@@ -50,8 +50,10 @@ void MoveAnalysis::move(player_t p, int pos)
 void MoveAnalysis::prisoners()
 {
 	for (auto p : captives) {
-		board->setPiece(p, BoardModel::NoPiece);
+		board->prisoner(p);
 	}
+	if (captives.size() == 1) board->setForbiddenPlay(captives.front());
+	else board->setForbiddenPlay(-1);
 }
 
 bool MoveAnalysis::moveCorrect(player_t p, int pos)
