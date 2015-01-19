@@ -1,11 +1,10 @@
 import QtQuick 2.2
-import QtQuick.Layouts 1.1
 
 Item {
     id: board
     property int boardSize: 13
 
-    GridLayout {
+    Grid {
         anchors.centerIn: parent
         anchors.fill: parent
 
@@ -20,8 +19,8 @@ Item {
             MouseArea {
                 id: area
 
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+                width: board.width / boardSize
+                height: board.height / boardSize
 
                 hoverEnabled: true
 

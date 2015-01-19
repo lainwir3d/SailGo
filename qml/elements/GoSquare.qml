@@ -42,7 +42,7 @@ Rectangle {
 
     Rectangle {
         width: parent.width / 2
-        height: parent.height * 1/20
+        height: 2
 
         color: parent.lineColor
         anchors.right: parent.right
@@ -53,7 +53,7 @@ Rectangle {
     }
 
     Rectangle {
-        width: parent.width * 1/20
+        width: 2
         height: parent.height / 2
 
         color: parent.lineColor
@@ -65,7 +65,7 @@ Rectangle {
 
     Rectangle {
         width: parent.width / 2
-        height: parent.height * 1/20
+        height: 2
 
         color: parent.lineColor
         anchors.left: parent.left
@@ -75,7 +75,7 @@ Rectangle {
     }
 
     Rectangle {
-        width: parent.width * 1/20
+        width: 2
         height: parent.height / 2
 
         color: parent.lineColor

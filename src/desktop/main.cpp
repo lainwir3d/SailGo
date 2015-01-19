@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("boardTableModel",  model);
     engine.rootContext()->setContextProperty("boardController",  controller);
     engine.rootContext()->setContextProperty("boardListModel",  listWrapper);
-    engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:///desktop/main.qml")));
 
     return app.exec();
 }
