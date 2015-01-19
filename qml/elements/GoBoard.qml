@@ -4,6 +4,8 @@ Item {
     id: board
     property int boardSize: 13
 
+    property bool hoverEnabled: false
+
     Grid {
         anchors.centerIn: parent
         anchors.fill: parent
@@ -22,10 +24,9 @@ Item {
                 width: board.width / boardSize
                 height: board.height / boardSize
 
-                hoverEnabled: true
+                hoverEnabled: board.hoverEnabled
 
                 onClicked: {
-                    console.log("cliqued index "+index);
                     boardController.playMove(index);
                 }
 

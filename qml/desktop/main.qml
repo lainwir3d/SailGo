@@ -16,5 +16,7 @@ Window {
 
         width: parent.width < parent.height ? parent.width : parent.height
         height: width
+
+        hoverEnabled: true
     }
 }
