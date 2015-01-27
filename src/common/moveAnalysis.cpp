@@ -74,7 +74,7 @@ void MoveAnalysis::NeighB::possibles(unsigned int pos_, unsigned int nbCol, unsi
 	if (pos >= nbCol) idx[nb++] = pos - nbCol;
 	if (pos + nbCol < nbPos) idx[nb++] = pos + nbCol;
 	if (pos % nbCol < nbCol - 1) idx[nb++] = pos + 1;
-	if (pos > 0) idx[nb++] = pos - 1;
+	if (pos % nbCol > 0) idx[nb++] = pos - 1;
 }
 
 /* Group class */
